@@ -1,0 +1,22 @@
+{
+  "mysql-connection": {
+    "host": "",
+    "port": 0,
+    "url": "mysql://admin:BIYIQENFJNVIANQO@sl-eu-fra-2-portal.1.dblayer.com:17191/webshop",
+    "database": "webshop",
+    "password": "",
+    "name": "mysql-connection",
+    "user": "",
+    "connector": "mysql"
+  },
+  "mondodb-connection": {
+    "host": "",
+    "port": 0,
+    "url": "mongodb://admin:PWYTVXVXLQCSKBYF@sl-eu-fra-2-portal.1.dblayer.com:17199,sl-eu-fra-2-portal.2.dblayer.com:17199/webshop?authSource=admin&ssl=true",
+    "database": "webshop",
+    "password": "",
+    "name": "mondodb-connection",
+    "user": "",
+    "connector": "mongodb"
+  }
+}

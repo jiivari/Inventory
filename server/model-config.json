@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "Item": {
+    "dataSource": "mysql-connection",
+    "public": true
+  },
+  "review": {
+    "dataSource": "mondodb-connection",
+    "public": false
+  },
+  "warehouse": {
+    "dataSource": "mondodb-connection",
+    "public": true
+  }
+}

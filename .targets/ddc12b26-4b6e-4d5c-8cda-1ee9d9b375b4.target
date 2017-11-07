@@ -1,0 +1,152 @@
+type: bluemix
+server:
+  displayName: Germany
+  name: eu-de
+  host: eu-de.apiconnect.ibmcloud.com
+org:
+  id: 596c7f3d0cf28a83adc1be46
+  name: martinhelin-test
+  displayName: martin.helin (Test)
+  orgType: apiProvider
+  status: active
+  advPortalOverride: true
+  extUaaAuthenticated: false
+  requiresSSLClientCertCheck: false
+  dormant: false
+  url: 'https://eu-de.apiconnect.ibmcloud.com/v1/orgs/596c7f3d0cf28a83adc1be46'
+  externalOrgId: c74699f2-7cc2-4625-98ec-e93c9e202c2d
+  externalInviteOverride: 'https://console.eu-de.bluemix.net/apis/catalog/invitation'
+  externalSpaceId: c74699f2-7cc2-4625-98ec-e93c9e202c2d
+  externalNativeOrgId: 07411442-4eee-4b8a-a8ec-275a7f4b3237
+  bluemix:
+    inviteUri: 'https://console.eu-de.bluemix.net/apis/catalog/invitation'
+    organization: 07411442-4eee-4b8a-a8ec-275a7f4b3237
+    space: c74699f2-7cc2-4625-98ec-e93c9e202c2d
+catalog:
+  id: 5a00f79a0cf2617eb55beaa2
+  orgId: 596c7f3d0cf28a83adc1be46
+  name: OP
+  shortName: op
+  owner:
+    id: 5a00f6060cf2d08a14a4a6fb
+    username: panu.tamminen@digia.com
+    context: apimanager
+    idpId: 58a1ee6e0cf25f131a86439a
+    email: panu.tamminen@digia.com
+    firstName: ''
+    lastName: ''
+    status: ACTIVE
+    lastLoginTime: '2017-11-07T07:30:09.078+0000'
+    url: 'https://eu-de.apiconnect.ibmcloud.com/v1/users/5a00f6060cf2d08a14a4a6fb'
+  apiCenter: false
+  portalType: ADVANCED
+  portalUrl: 'https://developer.eu-de.apiconnect.ibmcloud.com/martinhelin-test/op'
+  customPortalUrl: 'https://developer.eu-de.apiconnect.ibmcloud.com/martinhelin-test/op'
+  advPortalUrl: 'https://op-martinhelin-test.developer.eu-de.apiconnect.ibmcloud.com'
+  gatewayType: DataPowerGateway
+  gwServices:
+    - id: PRODDE_APIMGMT_GATEWAY
+      endpointUrl: 'https://api.eu-de.apiconnect.ibmcloud.com/martinhelin-test/op'
+  idp: 596c7f3e0cf28a83adc1be53
+  idps:
+    - 596c7f3e0cf28a83adc1be53
+  availableRoles:
+    - viewer
+    - developer
+  default: false
+  autoDeploy: true
+  restrictedDeployment: false
+  invitationEnabled: true
+  selfSignUpEnabled: true
+  spaceEnabled: false
+  spaceIds:
+    - 5a00f79a0cf2617eb55beaaa
+  testAppEnabled: true
+  testAppCredentials:
+    clientId: 315b17a7-fdc6-481b-a825-30b62a751063
+    clientSecret: P6yU0tJ8gO0tV1vL4eP5xA4sJ0vO5uJ4oF2cK6lU8yR6iK0yW2
+  createdAt: '2017-11-07T00:00:26.568+0000'
+  updatedAt: '2017-11-07T00:22:39.306+0000'
+  createdBy: panu.tamminen@digia.com
+  updatedBy: panu.tamminen@digia.com
+  url: >-
+    https://eu-de.apiconnect.ibmcloud.com/v1/orgs/596c7f3d0cf28a83adc1be46/environments/5a00f79a0cf2617eb55beaa2
+  applicationLifecycleEnabled: false
+  productDeploymentApprovalRequiredStates: []
+  orgName: martinhelin-test
+space:
+  none: true
+app:
+  metadata:
+    guid: 859b66ec-615f-4871-9cb0-83b87ab6a219
+  entity:
+    guid: 859b66ec-615f-4871-9cb0-83b87ab6a219
+    name: inventory
+    routes:
+      - guid: 713b74a2-2215-4941-9847-af533edab5c4
+        host: apiconnect-859b66ec-615f-4871-9cb0-83b87ab6a219
+        port: null
+        path: ''
+        domain:
+          guid: b9d502e6-3c28-4829-9ea2-75536d8c0e29
+          name: martinhelin-test.apic.eu-de.mybluemix.net
+    running_instances: 0
+    services: []
+    available_domains:
+      - guid: b9d502e6-3c28-4829-9ea2-75536d8c0e29
+        name: martinhelin-test.apic.eu-de.mybluemix.net
+        owning_organization_guid: 07411442-4eee-4b8a-a8ec-275a7f4b3237
+      - guid: 43c1092d-5b51-4357-94f2-eed0e0a4ddc0
+        name: eu-de.mybluemix.net
+        router_group_guid: null
+        router_group_type: null
+    production: false
+    space_guid: c74699f2-7cc2-4625-98ec-e93c9e202c2d
+    stack_guid: b27fa30f-9cb2-4119-a80b-1d168fb39ba3
+    buildpack: null
+    detected_buildpack: 'SDK for Node.js(TM) (ibm-node.js-6.11.4, buildpack-v3.15-20171024-1528)'
+    detected_buildpack_guid: 4b049b0c-902d-4097-be54-627b29577f4c
+    environment_json: {}
+    memory: 256
+    instances: 1
+    disk_quota: 1024
+    state: STOPPED
+    version: 91e69ba7-d03f-4ecd-ab27-b4c8390b4bde
+    command: null
+    console: true
+    debug: null
+    staging_task_id: 632ebcbf-b8b5-4da0-b91c-7efae9053768
+    package_state: PENDING
+    health_check_type: port
+    health_check_timeout: null
+    health_check_http_endpoint: null
+    staging_failed_reason: null
+    staging_failed_description: null
+    diego: true
+    docker_image: null
+    package_updated_at: '2017-11-07T13:55:13Z'
+    detected_start_command: ./vendor/initial_startup.rb
+    enable_ssh: true
+    ports: null
+id: ddc12b26-4b6e-4d5c-8cda-1ee9d9b375b4
+target: 1.0.0
+versionOptions:
+  inplaceUpdate: true
+publishApp: true
+publishProducts: true
+productStageOnly: false
+specificProducts: false
+workspaceDir:
+  path: 'C:\Users\jaiivari1\projects\APIConnect-Deploy\inventory - Copy'
+products:
+  - info:
+      name: inventory
+      title: inventory
+      version: 1.0.0
+    updatedAt: '2017-11-07T12:05:06.531Z'
+    file: >-
+      C:\Users\jaiivari1\projects\APIConnect-Deploy\inventory -
+      Copy\definitions\inventory-product.yaml
+    apis:
+      inventory:
+        $ref: inventory.yaml

@@ -1,0 +1,83 @@
+swagger: '2.0'
+info:
+  x-ibm-name: financing
+  title: financing
+  version: 1.0.1
+  description: Operations for calculating financial payments
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /financing
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - {}
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - activity-log:
+          title: activity-log
+          content: payload
+          error-content: payload
+          version: 1.0.0
+      - invoke:
+          title: invoke
+          timeout: 60
+          verb: GET
+          cache-response: protocol
+          cache-ttl: 900
+          stop-on-error:
+            - null
+          version: 1.0.0
+          target-url: >-
+            https://savingsample.mybluemix.net/api/plans/estimate?deposit=300&rate=0.04&years=20
+  gateway: datapower-gateway
+paths:
+  /calculate:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/paymentAmount'
+      operationId: get.financingAmout
+      parameters:
+        - name: amout
+          type: number
+          required: true
+          in: query
+          description: amout to finance
+          format: float
+        - name: duration
+          type: integer
+          required: true
+          in: query
+          description: length of term in months
+          format: int32
+        - name: rate
+          type: number
+          required: true
+          in: query
+          description: interest rate
+          format: float
+definitions:
+  paymentAmount:
+    properties:
+      paymentAmount:
+        type: number
+        description: Monthly payment amount
+        format: float
+        example: 199.99
+    additionalProperties: false
+tags: []
