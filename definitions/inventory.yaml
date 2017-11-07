@@ -1174,7 +1174,7 @@ basePath: /inventory
 swagger: '2.0'
 info:
   x-ibm-name: inventory
-  version: 1.0.0
+  version: 1.0.1
   title: inventory
 schemes:
   - https

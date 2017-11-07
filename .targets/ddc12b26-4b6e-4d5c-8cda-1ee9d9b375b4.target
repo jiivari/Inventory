@@ -78,13 +78,13 @@ space:
   none: true
 app:
   metadata:
-    guid: 859b66ec-615f-4871-9cb0-83b87ab6a219
+    guid: 47e683e1-1dc0-4476-965b-54ee2fd323a0
   entity:
-    guid: 859b66ec-615f-4871-9cb0-83b87ab6a219
+    guid: 47e683e1-1dc0-4476-965b-54ee2fd323a0
     name: inventory
     routes:
-      - guid: 713b74a2-2215-4941-9847-af533edab5c4
-        host: apiconnect-859b66ec-615f-4871-9cb0-83b87ab6a219
+      - guid: 3bd25f7e-0538-4694-bee2-4ed3bba5503d
+        host: apiconnect-47e683e1-1dc0-4476-965b-54ee2fd323a0
         port: null
         path: ''
         domain:
@@ -111,11 +111,11 @@ app:
     instances: 1
     disk_quota: 1024
     state: STOPPED
-    version: 91e69ba7-d03f-4ecd-ab27-b4c8390b4bde
+    version: a196a9c2-c719-4fd7-a4d8-ec5a6741f90a
     command: null
     console: true
     debug: null
-    staging_task_id: 632ebcbf-b8b5-4da0-b91c-7efae9053768
+    staging_task_id: 92bf3ac3-be1b-4411-9dac-0d497c6ee614
     package_state: PENDING
     health_check_type: port
     health_check_timeout: null
@@ -124,7 +124,7 @@ app:
     staging_failed_description: null
     diego: true
     docker_image: null
-    package_updated_at: '2017-11-07T13:55:13Z'
+    package_updated_at: '2017-11-07T14:20:32Z'
     detected_start_command: ./vendor/initial_startup.rb
     enable_ssh: true
     ports: null
@@ -134,10 +134,10 @@ versionOptions:
   inplaceUpdate: true
 publishApp: true
 publishProducts: true
-productStageOnly: false
-specificProducts: false
+productStageOnly: true
+specificProducts: true
 workspaceDir:
-  path: 'C:\Users\jaiivari1\projects\APIConnect-Deploy\inventory - Copy'
+  path: 'C:\Users\jaiivari1\projects\Inventory'
 products:
   - info:
       name: inventory
