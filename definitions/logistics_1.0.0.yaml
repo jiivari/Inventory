@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   x-ibm-name: logistics
   title: logistics
-  version: 1.0.4
+  version: 1.0.5
 schemes:
   - https
 basePath: /logistics
@@ -188,7 +188,7 @@ paths:
           type: string
           required: true
           in: query
-          description: Destination zip code.
+          description: Destination zip code changed.
       tags:
         - shipping
       description: This is a Logistics API using external resources
