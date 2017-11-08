@@ -6,10 +6,6 @@ info:
 apis:
   inventory:
     $ref: inventory.yaml
-  financing:
-    $ref: financing_1.0.1.yaml
-  logistics:
-    $ref: logistics_1.0.0.yaml
 visibility:
   view:
     type: public
