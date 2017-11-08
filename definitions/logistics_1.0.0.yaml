@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   x-ibm-name: logistics
   title: logistics
-  version: 1.0.5
+  version: 2.0.0
 schemes:
   - https
 basePath: /logistics
@@ -40,158 +40,22 @@ x-ibm-configuration:
           content: payload
           error-content: payload
           version: 1.0.0
-      - operation-switch:
-          title: operation-switch
-          case:
-            - operations:
-                - shipping.calc
-              execute:
-                - invoke:
-                    title: invoke_xyz
-                    timeout: 60
-                    verb: GET
-                    cache-response: protocol
-                    cache-ttl: 900
-                    version: 1.0.0
-                    target-url: >-
-                      $(shipping_svc_url)?company=xyz&from_zip=90210&to_zip={zip}
-                    output: xzy_response
-                - invoke:
-                    title: invoke_cek
-                    timeout: 60
-                    verb: GET
-                    cache-response: protocol
-                    cache-ttl: 900
-                    version: 1.0.0
-                    target-url: >-
-                      $(shipping_svc_url)?company=cek&from_zip=90210&to_zip={zip}
-                    output: cek_response
-                - map:
-                    title: map
-                    inputs:
-                      xyz:
-                        schema:
-                          $schema: 'http://json-schema.org/draft-04/schema#'
-                          id: 'http://jsonschema.net'
-                          type: object
-                          properties:
-                            company:
-                              id: 'http://jsonschema.net/company'
-                              type: string
-                              name: company
-                            rates:
-                              id: 'http://jsonschema.net/rates'
-                              type: object
-                              properties:
-                                next_day:
-                                  id: 'http://jsonschema.net/rates/next_day'
-                                  type: string
-                                  name: next_day
-                                two_day:
-                                  id: 'http://jsonschema.net/rates/two_day'
-                                  type: string
-                                  name: two_day
-                                ground:
-                                  id: 'http://jsonschema.net/rates/ground'
-                                  type: string
-                                  name: ground
-                              name: rates
-                          required:
-                            - company
-                            - rates
-                        variable: xzy_response.body
-                        content: application/json
-                      cek:
-                        schema:
-                          $schema: 'http://json-schema.org/draft-04/schema#'
-                          id: 'http://jsonschema.net'
-                          type: object
-                          properties:
-                            company:
-                              id: 'http://jsonschema.net/company'
-                              type: string
-                              name: company
-                            rates:
-                              id: 'http://jsonschema.net/rates'
-                              type: object
-                              properties:
-                                next_day:
-                                  id: 'http://jsonschema.net/rates/next_day'
-                                  type: string
-                                  name: next_day
-                                two_day:
-                                  id: 'http://jsonschema.net/rates/two_day'
-                                  type: string
-                                  name: two_day
-                                ground:
-                                  id: 'http://jsonschema.net/rates/ground'
-                                  type: string
-                                  name: ground
-                              name: rates
-                          required:
-                            - company
-                            - rates
-                        variable: cek_response.body
-                        content: application/json
-                    outputs:
-                      output:
-                        schema:
-                          $ref: '#/definitions/shipping'
-                        variable: message.body
-                        content: application/json
-                    actions:
-                      - set: output.xyz.next_day
-                        from: xyz.rates.next_day
-                      - set: output.xyz.two_day
-                        from: xyz.rates.two_day
-                      - set: output.xyz.ground
-                        from: xyz.rates.ground
-                      - set: output.cek.next_day
-                        from: cek.rates.next_day
-                      - set: output.cek.two_day
-                        from: cek.rates.two_day
-                      - set: output.cek.ground
-                        from: cek.rates.ground
-                    version: 1.0.0
-            - operations:
-                - get.stores
-              execute:
-                - invoke:
-                    title: invoke_geolocate
-                    timeout: 60
-                    verb: GET
-                    cache-response: protocol
-                    cache-ttl: 900
-                    version: 1.0.0
-                    target-url: >-
-                      http://nominatim.openstreetmap.org/search?postalcode={zip}&format=json
-                    output: geocode_response
-                - gatewayscript:
-                    title: format-maps-link
-                    version: 1.0.0
-                    source: "// Require API Connect functions\r\nvar apic = require('local:///isp/policy/apim.custom.js');\r\n// Save the geocode service response body to a variable\r\nvar mapsApiResponse = apic.getvariable('geocode_response.body');\r\n// Get location attributes from the response message\r\nvar location = mapsApiResponse[0];\r\nvar storesResponse = {\r\n\"maps_link\": 'https://www.openstreetmap.org/#map=16/' +\r\nlocation.lat + '/' + location.lon\r\n};\r\n// Save the output\r\napic.setvariable('message.body', storesResponse);"
-          otherwise: []
+      - invoke:
+          title: invoke_geolocate
+          timeout: 60
+          verb: GET
+          cache-response: protocol
+          cache-ttl: 900
           version: 1.0.0
+          target-url: >-
+            http://nominatim.openstreetmap.org/search?postalcode={zip}&format=json
+          output: geocode_response
+      - gatewayscript:
+          title: format-maps-link
+          version: 1.0.0
+          source: "// Require API Connect functions\r\nvar apic = require('local:///isp/policy/apim.custom.js');\r\n// Save the geocode service response body to a variable\r\nvar mapsApiResponse = apic.getvariable('geocode_response.body');\r\n// Get location attributes from the response message\r\nvar location = mapsApiResponse[0];\r\nvar storesResponse = {\r\n\"maps_link\": 'https://www.openstreetmap.org/#map=16/' +\r\nlocation.lat + '/' + location.lon\r\n};\r\n// Save the output\r\napic.setvariable('message.body', storesResponse);"
     catch: []
 paths:
-  /shipping:
-    get:
-      responses:
-        '200':
-          description: 200 OK
-          schema:
-            $ref: '#/definitions/shipping'
-      summary: Calculate shipping costs to a destination zip code
-      operationId: shipping.calc
-      parameters:
-        - name: zip
-          type: string
-          required: true
-          in: query
-          description: Destination zip code changed.
-      tags:
-        - shipping
-      description: This is a Logistics API using external resources
   /stores:
     get:
       responses:
