@@ -1210,7 +1210,7 @@ x-ibm-configuration:
     op:
       properties:
         runtime-url: >-
-          https://apiconnect-859b66ec-615f-4871-9cb0-83b87ab6a219.martinhelin-test.apic.eu-de.mybluemix.net
+          https://apiconnect-47e683e1-1dc0-4476-965b-54ee2fd323a0.martinhelin-test.apic.eu-de.mybluemix.net
         invoke-tls-profile: 'client:Loopback-client'
   assembly:
     execute:

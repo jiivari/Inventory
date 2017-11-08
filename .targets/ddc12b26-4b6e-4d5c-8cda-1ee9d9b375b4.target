@@ -145,8 +145,7 @@ products:
       version: 1.0.0
     updatedAt: '2017-11-07T12:05:06.531Z'
     file: >-
-      C:\Users\jaiivari1\projects\APIConnect-Deploy\inventory -
-      Copy\definitions\inventory-product.yaml
+      C:\Users\jaiivari1\projects\Inventory\definitions\inventory-product.yaml
     apis:
       inventory:
         $ref: inventory.yaml
