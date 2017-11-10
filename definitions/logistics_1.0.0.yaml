@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   x-ibm-name: logistics
   title: logistics
-  version: 2.0.0
+  version: 1.0.7
 schemes:
   - https
 basePath: /logistics
